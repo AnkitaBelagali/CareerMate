@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Readiness | CareerMate</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .readiness-container {
+            padding: 30px;
+            color: white;
+        }
+
+        .readiness-container h1 {
+            margin-bottom: 8px;
+        }
+
+        .readiness-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+            margin-top: 30px;
+        }
+
+        .readiness-card {
+            background: white;
+            color: #292344;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .score-card {
+            grid-column: span 2;
+            text-align: center;
+            padding: 35px;
+        }
+
+        .score {
+            font-size: 65px;
+            font-weight: bold;
+            color: #6257e8;
+            margin: 15px 0;
+        }
+
+        .progress-track {
+            height: 14px;
+            background: #e8e7f5;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #6257e8;
+            border-radius: 20px;
+            transition: width 1s ease;
+        }
+
+        .level {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #e8e7ff;
+            color: #6257e8;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .metric-number {
+            font-size: 35px;
+            font-weight: bold;
+            color: #6257e8;
+            margin-top: 15px;
+        }
+
+        .feedback-card {
+            grid-column: span 2;
+        }
+
+        .feedback-card li {
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 25px;
+            color: white;
+            text-decoration: none;
+        }
+
+        @media(max-width: 700px) {
+            .readiness-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .score-card,
+            .feedback-card {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="readiness-container">
+
+    <h1>🎯 Placement Readiness</h1>
+    <p>Understand how prepared you are for your placement journey.</p>
+
+    <div class="readiness-grid">
+
+        <!-- READINESS SCORE -->
+        <div class="readiness-card score-card">
+
+            <h2>🏆 Your Overall Readiness Score</h2>
+
+            <div class="score" id="readinessScore">Loading...</div>
+
+            <span class="level" id="readinessLevel">
+                Calculating...
+            </span>
+
+            <div class="progress-track">
+                <div class="progress-fill" id="scoreProgress"></div>
+            </div>
+
+            <p id="readinessMessage">
+                Analysing your preparation...
+            </p>
+
+        </div>
+
+
+        <!-- QUIZ PERFORMANCE -->
+        <div class="readiness-card">
+
+            <h2>📝 Quiz Performance</h2>
+
+            <div class="metric-number" id="totalQuizzes">0</div>
+
+            <p>Total quizzes attempted</p>
+
+        </div>
+
+
+        <!-- READINESS STATUS -->
+        <div class="readiness-card">
+
+            <h2>📊 Preparation Status</h2>
+
+            <div class="metric-number" id="statusText">
+                Loading...
+            </div>
+
+            <p>Your current preparation level</p>
+
+        </div>
+
+
+        <!-- PERSONALIZED FEEDBACK -->
+        <div class="readiness-card feedback-card">
+
+            <h2>💡 Preparation Feedback</h2>
+
+            <ul id="feedbackList">
+                <li>Loading recommendations...</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <a href="dashboard.html" class="back-button">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+<script src="readiness.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,670 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mock Test | CareerMate</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+body {
+    background: #100d20;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.page {
+    padding: 35px 6%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+.back {
+    color: #c4b5fd;
+    text-decoration: none;
+}
+
+h1 {
+    color: #c4b5fd;
+    margin-top: 25px;
+}
+
+.subtitle {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 20px;
+}
+
+.subject-card {
+    background: #211b38;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #40345f;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+    border-color: #a78bfa;
+}
+
+.subject-card h3 {
+    color: #c4b5fd;
+    margin-bottom: 10px;
+}
+
+.subject-card p {
+    color: #aaa;
+}
+
+button {
+    background: #8b5cf6;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 18px;
+}
+
+button:hover {
+    background: #7045d4;
+}
+
+#testSection {
+    display: none;
+    background: #19162d;
+    padding: 28px;
+    border-radius: 15px;
+    margin-top: 25px;
+}
+
+#timer {
+    color: #fbbf24;
+}
+
+.option {
+    display: block;
+    background: #30264d;
+    padding: 14px;
+    margin: 12px 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.option input {
+    margin-right: 10px;
+}
+
+#result {
+    color: #c4b5fd;
+    line-height: 1.8;
+    margin-top: 20px;
+}
+
+#saveStatus {
+    color: #86efac;
+    margin-top: 15px;
+}
+
+@media(max-width:600px) {
+    .page {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<a href="dashboard.html" class="back">← Back to Dashboard</a>
+
+<h1>📝 Placement Mock Test</h1>
+
+<p class="subtitle">
+Choose your subject and attempt a random 10-question placement test.
+</p>
+
+<div id="subjectSection">
+
+<div class="subject-grid" id="subjectGrid"></div>
+
+</div>
+
+<div id="testSection">
+
+<h2 id="testTitle"></h2>
+
+<h3 id="timer">Time: 05:00</h3>
+
+<p id="questionCount"></p>
+
+<h2 id="question"></h2>
+
+<div id="options"></div>
+
+<button id="nextBtn" onclick="nextQuestion()">
+Next Question →
+</button>
+
+<h2 id="result"></h2>
+
+<p id="saveStatus"></p>
+
+</div>
+
+</div>
+
+<script>
+
+// QUESTION BANK
+
+const questionBank = {
+
+"Aptitude": [
+
+{q:"What is 20% of 250?",o:["25","40","50","60"],a:2},
+{q:"What is 15% of 200?",o:["20","30","40","50"],a:1},
+{q:"Find the square of 12.",o:["124","144","132","154"],a:1},
+{q:"What is 25% of 400?",o:["50","75","100","125"],a:2},
+{q:"What is 8 × 7?",o:["54","56","64","48"],a:1},
+{q:"Find the average of 10, 20 and 30.",o:["15","20","25","30"],a:1},
+{q:"What is 5 factorial?",o:["25","60","100","120"],a:3},
+{q:"What is 144 divided by 12?",o:["10","11","12","14"],a:2},
+{q:"What is 40% of 150?",o:["40","50","60","70"],a:2},
+{q:"Simplify 15 + 25 × 2.",o:["80","65","50","75"],a:1},
+{q:"What is the cube of 3?",o:["9","18","27","36"],a:2},
+{q:"Find the next number: 2, 4, 8, 16, ?",o:["20","24","32","36"],a:2},
+{q:"What is 10% of 900?",o:["9","90","99","100"],a:1},
+{q:"A dozen contains how many items?",o:["10","11","12","15"],a:2},
+{q:"What is 7 squared?",o:["42","49","56","64"],a:1},
+{q:"Find 3/4 of 100.",o:["25","50","75","80"],a:2},
+{q:"What is 18 + 27?",o:["35","40","45","55"],a:2},
+{q:"What is 1000 divided by 25?",o:["20","30","40","50"],a:2},
+{q:"What is the percentage equivalent of 1/2?",o:["25%","40%","50%","75%"],a:2},
+{q:"Find the LCM of 4 and 6.",o:["8","10","12","24"],a:2}
+
+],
+
+"DBMS": [
+
+{q:"Which SQL command retrieves data?",o:["INSERT","UPDATE","SELECT","DELETE"],a:2},
+{q:"Which key uniquely identifies a record?",o:["Foreign Key","Primary Key","Candidate Key","Composite Key"],a:1},
+{q:"What does DBMS stand for?",o:["Database Management System","Data Basic Management System","Database Machine System","Data Backup Management System"],a:0},
+{q:"Which normal form removes partial dependency?",o:["1NF","2NF","3NF","BCNF"],a:1},
+{q:"Which SQL command removes a table?",o:["DELETE","REMOVE","DROP","CLEAR"],a:2},
+{q:"Which command adds new records?",o:["INSERT","SELECT","UPDATE","ALTER"],a:0},
+{q:"What is a foreign key?",o:["Unique identifier","Reference to another table's key","Primary password","Index"],a:1},
+{q:"Which SQL clause filters records?",o:["ORDER BY","WHERE","GROUP BY","JOIN"],a:1},
+{q:"Which function counts rows?",o:["SUM()","AVG()","COUNT()","MAX()"],a:2},
+{q:"What does SQL stand for?",o:["Structured Query Language","Simple Question Language","Standard Query Logic","System Query Language"],a:0},
+{q:"Which command modifies existing records?",o:["INSERT","UPDATE","CREATE","DROP"],a:1},
+{q:"Which JOIN returns matching rows from both tables?",o:["LEFT JOIN","RIGHT JOIN","INNER JOIN","FULL JOIN"],a:2},
+{q:"Which property ensures atomic transactions?",o:["Consistency","Isolation","Atomicity","Durability"],a:2},
+{q:"Which command creates a table?",o:["MAKE","CREATE","BUILD","INSERT"],a:1},
+{q:"Which normal form removes transitive dependency?",o:["1NF","2NF","3NF","4NF"],a:2},
+{q:"Which SQL clause sorts results?",o:["WHERE","ORDER BY","HAVING","GROUP BY"],a:1},
+{q:"Which is a DDL command?",o:["INSERT","UPDATE","CREATE","SELECT"],a:2},
+{q:"What is a tuple in a relational database?",o:["Column","Row","Table","Database"],a:1},
+{q:"Which command removes all rows but keeps the table?",o:["DROP","TRUNCATE","DELETE DATABASE","REMOVE"],a:1},
+{q:"Which constraint prevents NULL values?",o:["UNIQUE","CHECK","NOT NULL","DEFAULT"],a:2}
+
+],
+
+"Operating Systems": [
+
+{q:"What does OS stand for?",o:["Open Software","Operating System","Output System","Online Service"],a:1},
+{q:"Which is the main function of an OS?",o:["Web browsing","Resource management","Image editing","Programming"],a:1},
+{q:"Which scheduling algorithm uses time quantum?",o:["FCFS","SJF","Round Robin","Priority"],a:2},
+{q:"What is a deadlock?",o:["System restart","Processes waiting indefinitely","Memory allocation","File deletion"],a:1},
+{q:"Which memory is volatile?",o:["ROM","RAM","Hard Disk","SSD"],a:1},
+{q:"What is a process?",o:["Program in execution","File","Folder","Compiler"],a:0},
+{q:"Which is a page replacement algorithm?",o:["FIFO","TCP","DNS","HTTP"],a:0},
+{q:"What is virtual memory?",o:["Cloud storage","Disk space used as memory extension","Cache","ROM"],a:1},
+{q:"Which scheduling algorithm is non-preemptive by default?",o:["Round Robin","FCFS","SRTF","Preemptive Priority"],a:1},
+{q:"What is a semaphore used for?",o:["File storage","Process synchronization","Printing","Booting"],a:1},
+{q:"Which is a type of operating system?",o:["Batch OS","HTML OS","SQL OS","CSS OS"],a:0},
+{q:"What is thrashing?",o:["Excessive paging","Fast execution","File sharing","Booting"],a:0},
+{q:"What is a thread?",o:["Lightweight process","Hard disk","File system","Compiler"],a:0},
+{q:"Which memory is fastest?",o:["Hard disk","RAM","Cache","DVD"],a:2},
+{q:"What is context switching?",o:["Changing files","Switching CPU between processes","Restarting OS","Deleting process"],a:1},
+{q:"Which is responsible for memory management?",o:["Compiler","Operating System","Browser","Editor"],a:1},
+{q:"What is starvation?",o:["Process waiting indefinitely for resources","System shutdown","Memory overflow","Disk failure"],a:0},
+{q:"Which is a synchronization problem?",o:["Producer Consumer","Binary Search","Sorting","Compilation"],a:0},
+{q:"What is booting?",o:["Starting the computer","Deleting files","Formatting disk","Installing apps"],a:0},
+{q:"Which system call creates a new process in Unix?",o:["fork()","printf()","scanf()","malloc()"],a:0}
+
+],
+
+"Computer Networks": [
+
+{q:"Which protocol is connection-oriented?",o:["UDP","TCP","IP","ARP"],a:1},
+{q:"What does HTTP stand for?",o:["Hypertext Transfer Protocol","High Transfer Text Protocol","Hyperlink Text Program","Host Transfer Protocol"],a:0},
+{q:"Which device connects different networks?",o:["Hub","Switch","Router","Repeater"],a:2},
+{q:"What is the full form of DNS?",o:["Domain Name System","Data Network Service","Digital Name Server","Domain Network Security"],a:0},
+{q:"Which protocol sends email?",o:["FTP","SMTP","HTTP","SNMP"],a:1},
+{q:"How many layers are in the OSI model?",o:["4","5","7","8"],a:2},
+{q:"Which protocol is connectionless?",o:["TCP","UDP","FTP","SMTP"],a:1},
+{q:"What does IP stand for?",o:["Internet Protocol","Internal Program","Input Process","Information Port"],a:0},
+{q:"Which device works mainly at the data link layer?",o:["Router","Switch","Gateway","Modem"],a:1},
+{q:"Which protocol transfers files?",o:["FTP","SMTP","DNS","ARP"],a:0},
+{q:"What is the default port of HTTP?",o:["21","25","80","443"],a:2},
+{q:"What is the default port of HTTPS?",o:["80","110","443","21"],a:2},
+{q:"Which topology uses a central device?",o:["Bus","Ring","Star","Mesh"],a:2},
+{q:"What does LAN stand for?",o:["Local Area Network","Large Access Network","Linked Area Node","Local Access Node"],a:0},
+{q:"Which layer handles routing?",o:["Physical","Network","Session","Presentation"],a:1},
+{q:"What is the full form of MAC?",o:["Media Access Control","Machine Access Code","Main Area Control","Memory Access Connection"],a:0},
+{q:"Which protocol maps IP addresses to MAC addresses?",o:["DNS","ARP","FTP","HTTP"],a:1},
+{q:"Which is a private IPv4 address?",o:["8.8.8.8","192.168.1.1","1.1.1.1","200.10.1.1"],a:1},
+{q:"Which layer is responsible for end-to-end delivery?",o:["Transport","Physical","Data Link","Presentation"],a:0},
+{q:"What does URL stand for?",o:["Uniform Resource Locator","Universal Routing Link","Unified Resource List","User Reference Location"],a:0}
+
+],
+
+"Data Structures": [
+
+{q:"Which data structure follows FIFO?",o:["Stack","Queue","Tree","Graph"],a:1},
+{q:"Which data structure follows LIFO?",o:["Queue","Stack","Graph","Array"],a:1},
+{q:"Which data structure uses nodes and pointers?",o:["Array","Linked List","String","Matrix"],a:1},
+{q:"Which traversal visits root first?",o:["Inorder","Postorder","Preorder","Level order"],a:2},
+{q:"Which is the average time complexity of binary search?",o:["O(n)","O(log n)","O(n²)","O(1)"],a:1},
+{q:"Which data structure is used in recursion?",o:["Queue","Stack","Graph","Heap"],a:1},
+{q:"Which structure represents hierarchical data?",o:["Array","Tree","Queue","Stack"],a:1},
+{q:"What is the index of the first array element in C?",o:["1","0","-1","2"],a:1},
+{q:"Which algorithm sorts by repeatedly selecting the minimum?",o:["Bubble Sort","Selection Sort","Merge Sort","Quick Sort"],a:1},
+{q:"Which data structure is used in BFS?",o:["Stack","Queue","Heap","Tree"],a:1},
+{q:"Which data structure is used in DFS?",o:["Queue","Stack","Array only","Hash only"],a:1},
+{q:"What is the worst-case time complexity of linear search?",o:["O(1)","O(log n)","O(n)","O(n²)"],a:2},
+{q:"Which data structure supports priority-based removal?",o:["Queue","Priority Queue","Stack","Array"],a:1},
+{q:"What is a leaf node?",o:["Node with no children","Root node","Node with two children","Parent node"],a:0},
+{q:"Which sorting algorithm uses divide and conquer?",o:["Bubble Sort","Merge Sort","Selection Sort","Insertion Sort"],a:1},
+{q:"Which structure is used to implement a dictionary efficiently?",o:["Hash Table","Stack","Queue","Graph"],a:0},
+{q:"Which traversal visits left, root, right?",o:["Preorder","Inorder","Postorder","Level order"],a:1},
+{q:"What is the maximum number of children in a binary tree node?",o:["1","2","3","4"],a:1},
+{q:"Which data structure represents relationships between vertices?",o:["Stack","Graph","Queue","Array"],a:1},
+{q:"What is the average search complexity in a hash table?",o:["O(n)","O(log n)","O(1)","O(n²)"],a:2}
+
+],
+
+"Java / OOP": [
+
+{q:"Which concept hides implementation details?",o:["Inheritance","Abstraction","Polymorphism","Looping"],a:1},
+{q:"Which keyword creates an object in Java?",o:["class","new","this","static"],a:1},
+{q:"Which keyword inherits a class in Java?",o:["implements","extends","inherits","super"],a:1},
+{q:"Which method is the entry point of Java?",o:["start()","run()","main()","init()"],a:2},
+{q:"Which concept allows multiple forms?",o:["Encapsulation","Polymorphism","Abstraction","Compilation"],a:1},
+{q:"Which keyword prevents inheritance?",o:["static","final","public","void"],a:1},
+{q:"Which is not a primitive Java type?",o:["int","float","String","char"],a:2},
+{q:"Which keyword refers to the current object?",o:["super","this","self","current"],a:1},
+{q:"Which collection does not allow duplicate elements?",o:["List","Set","ArrayList","LinkedList"],a:1},
+{q:"Which exception is checked?",o:["NullPointerException","IOException","ArithmeticException","ArrayIndexOutOfBoundsException"],a:1},
+{q:"Which keyword handles exceptions?",o:["try","catch","throw","All of these"],a:3},
+{q:"Which access modifier is most restrictive?",o:["public","protected","private","default"],a:2},
+{q:"Which OOP feature supports code reuse?",o:["Inheritance","Abstraction","Encapsulation","Overloading"],a:0},
+{q:"Can Java support method overloading?",o:["Yes","No","Only in interfaces","Only in abstract classes"],a:0},
+{q:"Which keyword defines an interface implementation?",o:["extends","implements","interface","abstract"],a:1},
+{q:"Which block always executes after try/catch?",o:["throw","finally","static","final"],a:1},
+{q:"Which operator compares object references?",o:["equals()","==","compare()","!="],a:1},
+{q:"Which package is automatically imported in Java?",o:["java.util","java.io","java.lang","java.net"],a:2},
+{q:"Which keyword declares a constant-like variable?",o:["static","final","const","fixed"],a:1},
+{q:"Which class is the parent of all Java classes?",o:["Main","Object","String","Class"],a:1}
+
+],
+
+"Programming": [
+
+{q:"What is the output of 10 % 3?",o:["0","1","2","3"],a:1},
+{q:"Which symbol terminates a C statement?",o:[".",";",":",","],a:1},
+{q:"Which loop executes at least once?",o:["for","while","do-while","nested for"],a:2},
+{q:"Which keyword declares an integer in C?",o:["int","integer","number","var"],a:0},
+{q:"Which function prints output in C?",o:["scanf()","printf()","input()","display()"],a:1},
+{q:"Which operator means logical AND?",o:["||","&&","!","&"],a:1},
+{q:"What is the index of the first character in a C string?",o:["1","0","-1","2"],a:1},
+{q:"Which keyword exits a loop?",o:["continue","break","return only","skip"],a:1},
+{q:"Which symbol is used for pointer declaration in C?",o:["&","*","#","@"],a:1},
+{q:"Which function reads formatted input in C?",o:["printf()","scanf()","puts()","gets()"],a:1},
+{q:"Which data type stores a single character in C?",o:["int","char","float","double"],a:1},
+{q:"What is the result of 5 + 3 * 2?",o:["16","11","13","10"],a:1},
+{q:"Which statement selects between alternatives?",o:["if","for","while","goto"],a:0},
+{q:"Which operator gives the address of a variable?",o:["*","&","%","!"],a:1},
+{q:"Which is an entry-controlled loop?",o:["do-while","while","Both","None"],a:1},
+{q:"What does a function return when declared void?",o:["0","1","No value","Null integer"],a:2},
+{q:"Which data structure stores key-value pairs?",o:["Array","Map","Stack","Queue"],a:1},
+{q:"Which keyword skips the current loop iteration?",o:["break","continue","exit","stop"],a:1},
+{q:"Which operator is used for equality comparison in C?",o:["=","==","!=","<="],a:1},
+{q:"What is recursion?",o:["Function calling itself","Looping only","Sorting","Memory allocation"],a:0}
+
+]
+
+};
+
+
+// SUBJECT CARDS
+
+const subjectGrid = document.getElementById("subjectGrid");
+
+Object.keys(questionBank).forEach(subject => {
+
+    const card = document.createElement("div");
+
+    card.className = "subject-card";
+
+    card.innerHTML = `
+        <h3>📚 ${subject}</h3>
+        <p>20 Questions Available</p>
+        <p>10 Questions Per Attempt</p>
+        <button onclick="startTest('${subject}')">
+            Start Mock Test →
+        </button>
+    `;
+
+    subjectGrid.appendChild(card);
+
+});
+
+
+// TEST VARIABLES
+
+let questions = [];
+let current = 0;
+let score = 0;
+let selected = null;
+let finished = false;
+let timeLeft = 300;
+let timerInterval;
+let topicResults = {};
+let selectedSubject = "";
+
+
+// RANDOM QUESTION SELECTION
+
+function shuffle(array) {
+
+    const copy = [...array];
+
+    for(let i = copy.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+
+    }
+
+    return copy;
+
+}
+
+
+// START TEST
+
+function startTest(subject) {
+
+    selectedSubject = subject;
+
+    questions = shuffle(questionBank[subject]).slice(0,10);
+
+    current = 0;
+    score = 0;
+    selected = null;
+    finished = false;
+    timeLeft = 300;
+    topicResults = {};
+
+    document.getElementById("subjectSection").style.display = "none";
+
+    document.getElementById("testSection").style.display = "block";
+
+    document.getElementById("testTitle").textContent =
+        subject + " Mock Test";
+
+    document.getElementById("result").textContent = "";
+
+    document.getElementById("saveStatus").textContent = "";
+
+    document.getElementById("nextBtn").style.display = "inline-block";
+
+    loadQuestion();
+
+    updateTimer();
+
+    clearInterval(timerInterval);
+
+    timerInterval = setInterval(updateTimer,1000);
+
+}
+
+
+// LOAD QUESTION
+
+function loadQuestion() {
+
+    selected = null;
+
+    document.getElementById("questionCount").textContent =
+        "Question " + (current + 1) + " of 10";
+
+    document.getElementById("question").textContent =
+        questions[current].q;
+
+    const options = document.getElementById("options");
+
+    options.innerHTML = "";
+
+    questions[current].o.forEach((option,index) => {
+
+        const label = document.createElement("label");
+
+        label.className = "option";
+
+        const radio = document.createElement("input");
+
+        radio.type = "radio";
+        radio.name = "answer";
+        radio.value = index;
+
+        radio.addEventListener("change", () => {
+
+            selected = index;
+
+        });
+
+        label.appendChild(radio);
+
+        label.append(" " + option);
+
+        options.appendChild(label);
+
+    });
+
+}
+
+
+// NEXT QUESTION
+
+function nextQuestion() {
+
+    if(finished) return;
+
+    if(selected === null) {
+
+        alert("Please select an answer!");
+
+        return;
+
+    }
+
+    if(selected === questions[current].a) {
+
+        score++;
+
+    }
+
+    current++;
+
+    if(current < questions.length) {
+
+        loadQuestion();
+
+    } else {
+
+        finishTest();
+
+    }
+
+}
+
+
+// FINISH TEST AND SAVE
+
+async function finishTest() {
+
+    if(finished) return;
+
+    finished = true;
+
+    clearInterval(timerInterval);
+
+    document.getElementById("question").textContent =
+        "Test Completed! 🎉";
+
+    document.getElementById("questionCount").textContent = "";
+
+    document.getElementById("options").innerHTML = "";
+
+    document.getElementById("nextBtn").style.display = "none";
+
+    const percentage = Math.round(score / questions.length * 100);
+
+    document.getElementById("result").innerHTML =
+        "Subject: " + selectedSubject +
+        "<br>Your Score: " + score + "/10" +
+        "<br>Accuracy: " + percentage + "%";
+
+    const user = JSON.parse(
+        localStorage.getItem("careerMateUser") || "null"
+    );
+
+    const studentId = user?.id || user?._id;
+
+    if(!studentId) {
+
+        document.getElementById("saveStatus").textContent =
+            "Please login again to save your result.";
+
+        return;
+
+    }
+
+    document.getElementById("saveStatus").textContent =
+        "Saving your result...";
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5001/api/performance/save",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    studentId: studentId,
+
+                    category: "Mock Test",
+
+                    topic: selectedSubject,
+
+                    score: score,
+
+                    totalQuestions: questions.length
+
+                })
+            }
+        );
+
+        if(!response.ok) {
+
+            throw new Error("Unable to save mock test result.");
+
+        }
+
+        const history = JSON.parse(
+            localStorage.getItem("careerMateResults") || "[]"
+        );
+
+        history.push({
+
+            studentId: studentId,
+
+            test: selectedSubject + " Mock Test",
+
+            score: score,
+
+            total: questions.length,
+
+            percentage: percentage,
+
+            date: new Date().toLocaleString()
+
+        });
+
+        localStorage.setItem(
+            "careerMateResults",
+            JSON.stringify(history)
+        );
+
+        document.getElementById("saveStatus").textContent =
+            "✅ Result saved successfully! Your analytics have been updated.";
+
+    } catch(error) {
+
+        console.error(error);
+
+        document.getElementById("saveStatus").textContent =
+            "❌ Result could not be saved. Please check your backend.";
+
+    }
+
+}
+
+
+// TIMER
+
+function updateTimer() {
+
+    const minutes = Math.floor(timeLeft / 60);
+
+    const seconds = timeLeft % 60;
+
+    document.getElementById("timer").textContent =
+        "Time: " + minutes + ":" +
+        String(seconds).padStart(2,"0");
+
+    if(timeLeft <= 0) {
+
+        finishTest();
+
+        return;
+
+    }
+
+    timeLeft--;
+
+}
+
+</script>
+
+</body>
+</html>

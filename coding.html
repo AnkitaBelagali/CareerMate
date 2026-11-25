@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding Practice | CareerMate</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.page {padding:40px 7%;}
+h1 {color:#c4b5fd;}
+.question {
+background:#19162d;
+padding:25px;
+margin:20px 0;
+border-radius:12px;
+border:1px solid #49376e;
+}
+h3 {color:#c4b5fd;}
+button {
+background:#8b5cf6;
+color:white;
+border:0;
+padding:10px 18px;
+border-radius:7px;
+cursor:pointer;
+margin-top:12px;
+}
+pre {
+background:#0d0b1a;
+padding:15px;
+margin-top:12px;
+overflow-x:auto;
+color:#ddd;
+}
+.solution {display:none;}
+a {color:#c4b5fd;text-decoration:none;}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<a href="dashboard.html">← Back to Dashboard</a>
+
+<h1>⌨️ Coding Practice</h1>
+<p>Practise basic programming questions for placement interviews.</p>
+
+<div class="question">
+<h3>1. Reverse a String</h3>
+<p>Write a program to reverse a given string.</p>
+<button onclick="show(0)">View Java Solution</button>
+<div class="solution">
+<pre>
+public class Main {
+    public static void main(String[] args) {
+
+        String str = "CareerMate";
+        String reversed = "";
+
+        for(int i = str.length()-1; i >= 0; i--) {
+            reversed += str.charAt(i);
+        }
+
+        System.out.println(reversed);
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="question">
+<h3>2. Check Palindrome</h3>
+<p>Check whether a given number is a palindrome.</p>
+<button onclick="show(1)">View Java Solution</button>
+<div class="solution">
+<pre>
+public class Main {
+    public static void main(String[] args) {
+
+        int num = 121;
+        int original = num;
+        int reverse = 0;
+
+        while(num > 0) {
+            int digit = num % 10;
+            reverse = reverse * 10 + digit;
+            num = num / 10;
+        }
+
+        if(original == reverse)
+            System.out.println("Palindrome");
+        else
+            System.out.println("Not Palindrome");
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="question">
+<h3>3. Find Factorial</h3>
+<p>Find the factorial of a given number.</p>
+<button onclick="show(2)">View Java Solution</button>
+<div class="solution">
+<pre>
+public class Main {
+    public static void main(String[] args) {
+
+        int n = 5;
+        int fact = 1;
+
+        for(int i = 1; i <= n; i++) {
+            fact *= i;
+        }
+
+        System.out.println(fact);
+    }
+}
+</pre>
+</div>
+</div>
+
+<div class="question">
+<h3>4. Check Prime Number</h3>
+<p>Determine whether a number is prime.</p>
+<button onclick="show(3)">View Java Solution</button>
+<div class="solution">
+<pre>
+public class Main {
+    public static void main(String[] args) {
+
+        int n = 17;
+        boolean prime = n > 1;
+
+        for(int i = 2; i * i <= n; i++) {
+            if(n % i == 0) {
+                prime = false;
+                break;
+            }
+        }
+
+        System.out.println(prime ? "Prime" : "Not Prime");
+    }
+}
+</pre>
+</div>
+</div>
+
+</div>
+
+<script>
+function show(index) {
+    const solutions = document.querySelectorAll(".solution");
+    const solution = solutions[index];
+
+    solution.style.display =
+        solution.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</body>
+</html>

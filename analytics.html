@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weak Area Analytics | CareerMate</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f4f6fc;
+            color: #252b42;
+            padding: 35px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .header {
+            background: linear-gradient(120deg, #4831a8, #8065e8);
+            padding: 35px;
+            border-radius: 20px;
+            color: white;
+            margin-bottom: 28px;
+        }
+
+        .header h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: white;
+            text-decoration: none;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 18px;
+            border-radius: 8px;
+        }
+
+        .overview {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 28px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+        }
+
+        .overview h2 {
+            font-size: 17px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .overview h1 {
+            font-size: 36px;
+            color: #563db8;
+        }
+
+        .section-title {
+            margin-bottom: 18px;
+            font-size: 23px;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .topic-card {
+            background: white;
+            padding: 23px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            border-left: 5px solid #8065e8;
+        }
+
+        .topic-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .topic-top h3 {
+            font-size: 18px;
+        }
+
+        .status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .weak {
+            background: #ffe1e1;
+            color: #d43c3c;
+        }
+
+        .average {
+            background: #fff0cf;
+            color: #b77900;
+        }
+
+        .good {
+            background: #d9f7e5;
+            color: #198754;
+        }
+
+        .score {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .progress-track {
+            height: 10px;
+            background: #eeeeF5;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #8065e8, #b09cff);
+        }
+
+        .empty {
+            background: white;
+            padding: 35px;
+            text-align: center;
+            border-radius: 16px;
+            color: #777;
+        }
+
+        @media(max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>📊 Weak Area Analytics</h1>
+        <p>Discover your performance gaps and identify topics that need more practice.</p>
+
+        <a href="dashboard.html" class="back-btn">← Back to Dashboard</a>
+    </div>
+
+    <div class="overview">
+        <h2>Total Quizzes Attempted</h2>
+        <h1 id="totalQuizzes">0</h1>
+        <p>Based on your completed practice quizzes.</p>
+    </div>
+
+    <h2 class="section-title">📚 Topic-wise Performance</h2>
+
+    <div class="topic-grid" id="weakAreas">
+        <div class="empty">Loading your analytics...</div>
+    </div>
+
+</div>
+
+<script src="analytics.js"></script>
+
+</body>
+</html>

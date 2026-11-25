@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CareerMate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <h2 class="logo">Career<span>Mate.</span></h2>
+
+            <p class="menu-title">MAIN MENU</p>
+
+            <nav>
+
+                <a href="./dashboard.html" class="active">🏠 Dashboard</a>
+                <a href="./aptitude.html">🧠 Aptitude</a>
+                <a href="./technical.html">💻 Technical Preparation</a>
+                <a href="./coding.html">⌨️ Coding Practice</a>
+                <a href="./formulas.html">📖 Formula Vault</a>
+                <a href="./interview.html">🎯 Interview Preparation</a>
+                <a href="./company-interview.html">🏢 Company Interview Questions</a>
+                <a href="./mocktest.html">📝 Mock Tests</a>
+                <a href="./progress.html">📊 My Progress</a>
+                <a href="./analytics.html">📊 Weak Areas & Readiness</a>
+                <a href="./study-goals.html">📅 Daily Study Goals</a>
+                <a href="./resume-builder.html">📄 Resume Builder</a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="./index.html">🚪 Logout</a>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <!-- HEADER -->
+            <header class="dashboard-header">
+
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Welcome back! Let's prepare for your dream job.</p>
+                </div>
+
+                <div class="profile">
+                    <span>👤</span>
+                    <p id="studentName">Student</p>
+                </div>
+
+            </header>
+
+
+            <!-- WELCOME SECTION -->
+            <section class="welcome-box">
+
+                <div>
+                    <h2>Your Dream Career Starts Here! 🚀</h2>
+
+                    <p>
+                        Stay consistent, practise every day
+                        and move one step closer to your dream placement.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+            <section class="stats-container">
+
+                <div class="stat-card">
+                    <span>📚</span>
+                    <h3 id="topicsCompleted">0</h3>
+                    <p>Topics Completed</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>💻</span>
+                    <h3 id="codingCompleted">0</h3>
+                    <p>Coding Problems</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>📝</span>
+                    <h3 id="mockTestsCompleted">0</h3>
+                    <p>Mock Tests</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>🔥</span>
+                    <h3 id="learningStreak">0 Days</h3>
+                    <p>Learning Streak</p>
+                </div>
+
+            </section>
+
+
+            <!-- PREPARATION MODULES -->
+            <section class="modules-section">
+
+                <h2>Explore Your Preparation</h2>
+
+                <div class="modules-container">
+
+                    <!-- APTITUDE -->
+                    <div class="module-card">
+                        <span>🧠</span>
+                        <h3>Aptitude Preparation</h3>
+                        <p>
+                            Improve mathematics, logical reasoning
+                            and verbal ability through lessons and quizzes.
+                        </p>
+                        <button onclick="window.location.href='readiness.html'">
+
+                            view Readiness →
+                        </button>
+                    </div>
+
+
+                    <!-- TECHNICAL -->
+                    <div class="module-card">
+                        <span>💻</span>
+                        <h3>Technical Preparation</h3>
+                        <p>
+                            Learn DBMS, SQL, Operating Systems,
+                            Computer Networks and OOP concepts.
+                        </p>
+                        <button onclick="window.location.href='./technical.html'">
+                            Explore →
+                        </button>
+                    </div>
+
+
+                    <!-- CODING -->
+                    <div class="module-card">
+                        <span>⌨️</span>
+                        <h3>Coding Practice</h3>
+                        <p>
+                            Practise programming problems,
+                            understand solutions and improve coding skills.
+                        </p>
+                        <button onclick="window.location.href='./coding.html'">
+                            Explore →
+                        </button>
+                    </div>
+
+
+                    <!-- INTERVIEW -->
+                    <div class="module-card">
+                        <span>🎯</span>
+                        <h3>Interview Preparation</h3>
+                        <p>
+                            Prepare for HR interviews,
+                            technical questions and placement rounds.
+                        </p>
+                        <button onclick="window.location.href='./interview.html'">
+                            Explore →
+                        </button>
+                    </div>
+
+
+                    <!-- FORMULA VAULT -->
+                    <div class="module-card">
+                        <span>📖</span>
+                        <h3>Formula Vault</h3>
+                        <p>
+                            Access important aptitude formulas,
+                            shortcuts, tricks and examples.
+                        </p>
+                        <button onclick="window.location.href='./formulas.html'">
+                            Explore →
+                        </button>
+                    </div>
+
+
+                    <!-- MOCK TEST -->
+                    <div class="module-card">
+                        <span>📝</span>
+                        <h3>Mock Tests</h3>
+                        <p>
+                            Attempt timed placement tests,
+                            check your scores and improve accuracy.
+                        </p>
+                        <button onclick="window.location.href='./mocktest.html'">
+                            Explore →
+                        </button>
+                    </div>
+
+
+                    <!-- MY PROGRESS -->
+                    <div class="module-card">
+                        <span>📊</span>
+                        <h3>My Progress</h3>
+                        <p>
+                            View your quiz history,
+                            test scores and overall preparation performance.
+                        </p>
+                        <button onclick="window.location.href='./progress.html'">
+                            Explore →
+                        </button>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CAREER TOOLS & PROGRESS -->
+            <section class="modules-section">
+
+                <h2>🎯 Your Career Tools & Progress</h2>
+
+                <div class="modules-container">
+
+                    <!-- DAILY STUDY GOALS -->
+                    <div class="module-card">
+                        <span>📅</span>
+                        <h3>Daily Study Goals</h3>
+                        <p>
+                            Set daily learning targets, complete your tasks
+                            and maintain your study consistency.
+                        </p>
+                        <button onclick="window.location.href='./study-goals.html'">
+                            View Goals →
+                        </button>
+                    </div>
+
+
+                    <!-- WEAK AREA ANALYSIS -->
+                    <div class="module-card">
+                        <span>📊</span>
+                        <h3>Weak Area Analysis</h3>
+                        <p>
+                            Identify topics that need improvement
+                            based on your quiz performance.
+                        </p>
+                        <button onclick="window.location.href='./analytics.html'">
+                            Analyse Performance →
+                        </button>
+                    </div>
+
+
+                    <!-- PLACEMENT READINESS -->
+                    <div class="module-card">
+                        <span>📈</span>
+                        <h3>Placement Readiness</h3>
+                        <p>
+                            Check your placement preparation score
+                            and understand your overall progress.
+                        </p>
+                        <button onclick="window.location.href='./readiness.html'">
+                            View Readiness →
+                        </button>
+                    </div>
+
+
+                    <!-- RESUME BUILDER -->
+                    <div class="module-card">
+                        <span>📄</span>
+                        <h3>Resume Builder</h3>
+                        <p>
+                            Create a professional, placement-ready resume
+                            and download it as a PDF.
+                        </p>
+                        <button onclick="window.location.href='./resume-builder.html'">
+                            Build Resume →
+                        </button>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="dashboard-footer">
+                © 2026 CareerMate | Learn. Practise. Improve. Get Placed.
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>

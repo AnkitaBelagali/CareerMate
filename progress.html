@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Progress | CareerMate</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.page {padding:40px 7%;}
+h1 {color:#c4b5fd;}
+.stats {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+margin:30px 0;
+}
+.card {
+background:#19162d;
+padding:25px;
+border-radius:12px;
+border:1px solid #49376e;
+}
+.card h2 {color:#c4b5fd;}
+table {
+width:100%;
+border-collapse:collapse;
+margin-top:25px;
+background:#19162d;
+}
+th,td {
+padding:15px;
+border:1px solid #49376e;
+text-align:left;
+}
+th {color:#c4b5fd;}
+a {color:#c4b5fd;text-decoration:none;}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<a href="dashboard.html">← Back to Dashboard</a>
+
+<h1>📊 My Progress</h1>
+
+<p>Track your placement preparation performance.</p>
+
+<div class="stats">
+
+<div class="card">
+<h2 id="totalTests">0</h2>
+<p>Total Mock Tests</p>
+</div>
+
+<div class="card">
+<h2 id="averageScore">0%</h2>
+<p>Average Accuracy</p>
+</div>
+
+<div class="card">
+<h2 id="bestScore">0%</h2>
+<p>Best Performance</p>
+</div>
+
+</div>
+
+<h2>Mock Test History</h2>
+
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Score</th>
+<th>Accuracy</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody id="history"></tbody>
+</table>
+
+<p id="emptyMessage" style="margin-top:20px;color:#c4b5fd;"></p>
+
+</div>
+
+<script>
+
+const user = JSON.parse(
+localStorage.getItem("careerMateUser") || "{}"
+);
+
+const allResults = JSON.parse(
+localStorage.getItem("careerMateResults") || "[]"
+);
+
+const results = allResults.filter(result =>
+result.studentId === (user.id || "guest")
+);
+
+document.getElementById("totalTests").textContent = results.length;
+
+if(results.length > 0) {
+
+const average = results.reduce(
+(sum,item) => sum + item.percentage,0
+) / results.length;
+
+const best = Math.max(
+...results.map(item => item.percentage)
+);
+
+document.getElementById("averageScore").textContent =
+Math.round(average) + "%";
+
+document.getElementById("bestScore").textContent =
+best + "%";
+
+const history = document.getElementById("history");
+
+results.slice().reverse().forEach(item => {
+
+const row = document.createElement("tr");
+
+[item.test,item.score + "/" + item.total,
+item.percentage + "%",item.date].forEach(value => {
+
+const cell = document.createElement("td");
+cell.textContent = value;
+row.appendChild(cell);
+
+});
+
+history.appendChild(row);
+
+});
+
+} else {
+
+document.getElementById("emptyMessage").textContent =
+"Your test history will appear here after completing your first mock test.";
+
+}
+
+</script>
+
+</body>
+</html>

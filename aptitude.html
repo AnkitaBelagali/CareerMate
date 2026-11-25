@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptitude Preparation | CareerMate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <h2 class="logo">Career<span>Mate.</span></h2>
+
+            <p class="menu-title">MAIN MENU</p>
+
+        
+<p class="menu-title">MAIN MENU</p>
+
+<nav>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="aptitude.html" class="active">🧠 Aptitude</a>
+    <a href="technical.html">💻 Technical Preparation</a>
+    <a href="coding.html">⌨️ Coding Practice</a>
+    <a href="formulas.html">📖 Formula Vault</a>
+    <a href="interview.html">🎯 Interview Preparation</a>
+    <a href="mocktest.html">📝 Mock Tests</a>
+    <a href="progress.html">📊 My Progress</a>
+    <a href="study-goals.html">🎯 Daily Study Goals</a>
+    <a href="analytics.html">📈 Weak Areas & Readiness</a>
+    <a href="company-interview.html">🏢 Company Questions</a>
+</nav>
+
+            <div class="sidebar-bottom">
+                <a href="index.html">🚪 Logout</a>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <header class="dashboard-header">
+                <div>
+                    <h1>Aptitude Preparation 🧠</h1>
+                    <p>Strengthen your problem-solving skills for placements.</p>
+                </div>
+
+                <div class="profile">
+                    <span>👤</span>
+                    <p id="studentName">Student</p>
+                </div>
+            </header>
+
+            <!-- INTRODUCTION -->
+            <section class="welcome-box">
+                <div>
+                    <h2>Master Aptitude, Crack Placements! 🚀</h2>
+                    <p>
+                        Learn important concepts, understand formulas,
+                        practise questions and improve your accuracy
+                        step by step.
+                    </p>
+                </div>
+            </section>
+
+            <!-- CATEGORY CARDS -->
+            <section class="modules-section">
+
+                <h2>Choose Your Preparation Category</h2>
+
+                <div class="modules-container">
+
+                    <div class="module-card">
+                        <span>🔢</span>
+                        <h3>Quantitative Aptitude</h3>
+                        <p>
+                            Improve mathematical skills through
+                            important placement topics and practice.
+                        </p>
+                        <button onclick="openAptitudeCategory('quantitative')">
+                            Explore Topics →
+                        </button>
+                    </div>
+
+                    <div class="module-card">
+                        <span>🧩</span>
+                        <h3>Logical Reasoning</h3>
+                        <p>
+                            Develop logical thinking and solve
+                            reasoning problems confidently.
+                        </p>
+                        <button onclick="openAptitudeCategory('reasoning')">
+                            Explore Topics →
+                        </button>
+                    </div>
+
+                    <div class="module-card">
+                        <span>📚</span>
+                        <h3>Verbal Ability</h3>
+                        <p>
+                            Improve grammar, vocabulary and
+                            communication skills.
+                        </p>
+                        <button onclick="openAptitudeCategory('verbal')">
+                            Explore Topics →
+                        </button>
+                    </div>
+
+                </div>
+
+            </section>
+            <!-- LESSON AREA -->
+
+<section class="lesson-section" id="lessonSection">
+
+    <h2 id="lessonTitle">Chapter Learning</h2>
+
+    <div id="lessonContent">
+        <p>Select a chapter and click Start Learning to begin.</p>
+    </div>
+
+</section>
+
+           <!-- TOPIC AREA -->
+<section class="topic-section" id="topicSection">
+
+    <h2 id="topicHeading">Your Aptitude Topics</h2>
+
+    <p id="topicDescription">
+        Select a category above to explore its chapters.
+    </p>
+
+    <div class="topic-container" id="topicContainer">
+
+    </div>
+
+</section>
+        </main>
+
+    </div>
+
+   <script src="aptitudeData.js"></script>
+<script src="quizData.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

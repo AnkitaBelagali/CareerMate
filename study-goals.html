@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Daily Study Goals | CareerMate</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <h2 class="logo">Career<span>Mate.</span></h2>
+
+        <p class="menu-title">MAIN MENU</p>
+
+        <a href="dashboard.html">🏠 Dashboard</a>
+        <a href="aptitude.html">🧠 Aptitude</a>
+        <a href="technical.html">💻 Technical Preparation</a>
+        <a href="coding.html">⌨️ Coding Practice</a>
+        <a href="formulas.html">📖 Formula Vault</a>
+        <a href="interview.html">🎯 Interview Preparation</a>
+        <a href="mocktest.html">📝 Mock Tests</a>
+        <a href="progress.html">📊 My Progress</a>
+        <a href="study-goals.html" class="active">📅 Study Goals</a>
+
+        <div class="sidebar-bottom">
+            <a href="index.html" onclick="localStorage.removeItem('careerMateUser')">
+                🚪 Logout
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+
+            <div>
+                <h1>Daily Study Goals 📅</h1>
+                <p>Plan your learning and stay consistent every day.</p>
+            </div>
+
+            <div class="profile">
+                <span>👤</span>
+                <p id="studentName">Student</p>
+            </div>
+
+        </header>
+
+
+        <!-- INTRODUCTION -->
+        <section class="welcome-box">
+
+            <div>
+                <h2>Make Every Study Day Count! 🚀</h2>
+
+                <p>
+                    Create daily goals, track your study hours,
+                    complete tasks and monitor your learning history.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+        <section class="goal-stats">
+
+            <div class="goal-stat-card">
+                <h3 id="totalGoals">0</h3>
+                <p>Total Goals</p>
+            </div>
+
+            <div class="goal-stat-card">
+                <h3 id="completedGoals">0</h3>
+                <p>Completed Goals</p>
+            </div>
+
+            <div class="goal-stat-card">
+                <h3 id="pendingGoals">0</h3>
+                <p>Pending Goals</p>
+            </div>
+
+            <div class="goal-stat-card">
+                <h3 id="totalHours">0</h3>
+                <p>Study Hours</p>
+            </div>
+
+        </section>
+
+
+        <!-- ADD GOAL -->
+        <section class="goal-form-section">
+
+            <h2>➕ Create a New Study Goal</h2>
+
+            <form id="studyGoalForm">
+
+                <div class="goal-form-grid">
+
+                    <div>
+                        <label>Study Task</label>
+
+                        <input
+                            type="text"
+                            id="goalTask"
+                            placeholder="Example: Complete DBMS normalization"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label>Subject</label>
+
+                        <select id="goalSubject" required>
+
+                            <option value="">Select Subject</option>
+
+                            <option value="Aptitude">Aptitude</option>
+                            <option value="DBMS">DBMS</option>
+                            <option value="Java">Java</option>
+                            <option value="Python">Python</option>
+                            <option value="SQL">SQL</option>
+                            <option value="Operating System">Operating System</option>
+                            <option value="Computer Networks">Computer Networks</option>
+                            <option value="DSA">DSA</option>
+                            <option value="Coding">Coding</option>
+                            <option value="Interview Preparation">Interview Preparation</option>
+                            <option value="Other">Other</option>
+
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>Study Date</label>
+
+                        <input
+                            type="date"
+                            id="goalDate"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label>Target Study Hours</label>
+
+                        <input
+                            type="number"
+                            id="goalHours"
+                            min="0"
+                            max="24"
+                            step="0.5"
+                            value="1"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <button type="submit" class="add-goal-btn">
+                    Add Study Goal +
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- STUDY HISTORY -->
+        <section class="goal-history-section">
+
+            <div class="goal-history-header">
+
+                <div>
+                    <h2>📚 My Study History</h2>
+                    <p>View your goals according to their study dates.</p>
+                </div>
+
+                <input
+                    type="date"
+                    id="historyDate"
+                >
+
+            </div>
+
+            <div id="studyGoalList">
+
+                <p class="empty-goals">
+                    Loading your study goals...
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="studyGoals.js"></script>
+
+</body>
+</html>

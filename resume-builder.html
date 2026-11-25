@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | CareerMate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <aside class="sidebar">
+        <h2 class="logo">Career<span>Mate.</span></h2>
+
+        <p class="menu-title">MAIN MENU</p>
+
+        <nav>
+            <a href="dashboard.html">🏠 Dashboard</a>
+            <a href="aptitude.html">🧠 Aptitude</a>
+            <a href="technical.html">💻 Technical Preparation</a>
+            <a href="coding.html">⌨️ Coding Practice</a>
+            <a href="formulas.html">📖 Formula Vault</a>
+            <a href="interview.html">🎯 Interview Preparation</a>
+            <a href="company-interview.html">🏢 Company Questions</a>
+            <a href="mocktest.html">📝 Mock Tests</a>
+            <a href="progress.html">📊 My Progress</a>
+            <a href="study-goals.html">🎯 Daily Study Goals</a>
+            <a href="analytics.html">📈 Weak Areas & Readiness</a>
+            <a href="resume-builder.html" class="active">📄 Resume Builder</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="index.html">🚪 Logout</a>
+        </div>
+    </aside>
+
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+            <div>
+                <h1>📄 Smart Resume Builder</h1>
+                <p>Create a professional, placement-ready resume.</p>
+            </div>
+        </header>
+
+        <div class="resume-layout">
+
+            <section class="resume-form">
+
+                <h2>Build Your Resume</h2>
+
+                <form id="resumeForm">
+
+                    <h3>👤 Personal Details</h3>
+
+                    <input type="text" id="fullName" placeholder="Full Name" required>
+                    <input type="email" id="email" placeholder="Email Address" required>
+                    <input type="tel" id="phone" placeholder="Phone Number">
+                    <input type="text" id="location" placeholder="Location">
+                    <input type="text" id="linkedin" placeholder="LinkedIn Profile">
+                    <input type="text" id="github" placeholder="GitHub Profile">
+
+                    <h3>📝 Professional Summary</h3>
+
+                    <textarea id="summary" placeholder="Write your professional summary"></textarea>
+
+                    <h3>🎓 Education</h3>
+
+                    <input type="text" id="degree" placeholder="Degree">
+                    <input type="text" id="college" placeholder="College / University">
+                    <input type="text" id="graduation" placeholder="Graduation Year">
+                    <input type="text" id="cgpa" placeholder="CGPA / Percentage">
+
+                    <h3>💻 Technical Skills</h3>
+
+                    <textarea id="skills" placeholder="Example: Java, Python, HTML, CSS, JavaScript, MongoDB"></textarea>
+
+                    <h3>🚀 Projects</h3>
+
+                    <textarea id="projects" placeholder="Project title, description and technologies used"></textarea>
+
+                    <h3>🏢 Internships / Experience</h3>
+
+                    <textarea id="experience" placeholder="Company, role and duration"></textarea>
+
+                    <h3>📜 Certifications</h3>
+
+                    <textarea id="certifications" placeholder="Enter your certifications"></textarea>
+
+                    <h3>🏆 Achievements</h3>
+
+                    <textarea id="achievements" placeholder="Enter your achievements"></textarea>
+
+                    <button type="button" onclick="generateResume()">
+                        Generate Resume →
+                    </button>
+
+                </form>
+
+            </section>
+
+            <section class="resume-preview">
+
+                <h2>📑 Live Resume Preview</h2>
+
+                <div id="resumePreview">
+                    <div class="preview-placeholder">
+                        <span>📄</span>
+                        <h3>Your Resume Will Appear Here</h3>
+                        <p>Fill in your details and click Generate Resume.</p>
+                    </div>
+                </div>
+
+                <button onclick="downloadResume()">
+                    ⬇ Download Resume PDF
+                </button>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="resume-builder.js"></script>
+
+</body>
+</html>
