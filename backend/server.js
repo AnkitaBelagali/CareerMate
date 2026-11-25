@@ -26,7 +26,7 @@ app.use("/api/study-goals", studyGoalRoutes);
 app.use("/api/performance", performanceRoutes);
 
 
-// AUTHENTICATION TEST ROUTE
+// API TEST ROUTE
 app.get("/api/auth/test", (req, res) => {
     res.json({
         message: "CareerMate API Working!"
@@ -63,62 +63,41 @@ app.use(express.static(path.join(__dirname, "..")));
 
 // HOME PAGE
 app.get("/", (req, res) => {
-
     res.sendFile(
         path.join(__dirname, "..", "index.html")
     );
-
 });
 
 
 // HANDLE FRONTEND 404
 app.use((req, res) => {
-
     res.status(404).send("Page Not Found");
-
 });
 
 
-// MONGODB CONNECTION
+// MONGODB CONNECTION AND SERVER START
+const PORT = process.env.PORT || 5001;
+
 mongoose.connect(process.env.MONGO_URI)
 
     .then(() => {
+
         console.log("MongoDB Connected Successfully!");
+
+        app.listen(PORT, "0.0.0.0", () => {
+
+            console.log(
+                `CareerMate server running on port ${PORT}`
+            );
+
+        });
+
     })
 
     .catch((error) => {
-        console.log("MongoDB Connection Error:", error);
+
+        console.error("MongoDB Connection Error:", error);
+
+        process.exit(1);
+
     });
-
-
-// START SERVER
-const PORT = 5001;
-
-app.listen(PORT, () => {
-
-    console.log(
-        `CareerMate server running on http://localhost:${PORT}`
-    );
-
-    const websiteURL = `http://localhost:${PORT}`;
-
-    // AUTOMATICALLY OPEN WEBSITE
-    setTimeout(() => {
-
-        const { exec } = require("child_process");
-
-        if (process.platform === "win32") {
-            exec(`start "" "${websiteURL}"`);
-        }
-
-        else if (process.platform === "darwin") {
-            exec(`open "${websiteURL}"`);
-        }
-
-        else {
-            exec(`xdg-open "${websiteURL}"`);
-        }
-
-    }, 1000);
-
-});

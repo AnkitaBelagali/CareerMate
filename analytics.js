@@ -14,7 +14,7 @@ async function loadAnalytics() {
 
     try {
         const response = await fetch(
-            `http://localhost:5001/api/performance/analytics/${studentId}`
+            `/api/performance/analytics/${studentId}`
         );
 
         const data = await response.json();

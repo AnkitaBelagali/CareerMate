@@ -4,8 +4,9 @@
   "description": "CareerMate Placement Preparation Website",
   "main": "index.html",
   "scripts": {
-    "dev": "node backend/server.js"
-  },
+  "start": "node server.js",
+  "dev": "node server.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -29,7 +29,7 @@ if (registerForm) {
         try {
 
             const response = await fetch(
-                "http://localhost:5001/api/auth/register",
+                "/api/auth/register",
                 {
                     method: "POST",
 
@@ -92,7 +92,7 @@ if (loginForm) {
         try {
 
             const response = await fetch(
-                "http://localhost:5001/api/auth/login",
+                "/api/auth/login",
                 {
                     method: "POST",
 
@@ -579,7 +579,7 @@ async function checkQuizAnswers() {
     try {
 
         const response = await fetch(
-            "http://localhost:5001/api/performance/save",
+            "/api/performance/save",
             {
                 method: "POST",
 

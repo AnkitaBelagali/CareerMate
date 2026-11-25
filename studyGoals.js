@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5001/api/study-goals";
+const API_URL = "/api/study-goals";
 
 
 // GET LOGGED-IN STUDENT
